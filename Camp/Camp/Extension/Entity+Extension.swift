@@ -34,4 +34,17 @@ extension Entity {
             return nil
         }
     }
+    
+    static func createDirectionalLight() -> Entity {
+        let lightEntity = Entity()
+        let redLightComponent = DirectionalLightComponent(
+            color: .white, intensity: 2000
+        )
+        
+        let lightShadowComponent = DirectionalLightComponent.Shadow()
+        lightEntity.components.set([redLightComponent, lightShadowComponent])
+        lightEntity.orientation = simd_quatf(angle: -.pi/2, axis: .init(1, 0, 0))
+        
+        return lightEntity
+    }
 }

@@ -1,7 +1,7 @@
 #usda 1.0
 (
     customLayerData = {
-        string creator = "Reality Composer Pro Version 2.0 (448.0.16.0.3)"
+        string creator = "Reality Composer Pro Version 2.0 (448.60.4)"
     }
     defaultPrim = "Root"
     metersPerUnit = 1
@@ -33,7 +33,7 @@ def Xform "Root"
                 float particleSpeedVariation = 0.04
                 float3 shapeSize = (1, 10, 1)
                 bool spawnInheritParentColor = 0
-                token spawnOccasion = "OnDeath"
+                token spawnOccasion = "OnUpdate"
                 float spawnSpreadFactor = 0
                 float spawnSpreadFactorVariation = 0
                 float spawnVelocityFactor = 1
@@ -59,7 +59,7 @@ def Xform "Root"
                     float particleAngleVariation = 3.1415925
                     float particleAngularVelocity = 0
                     float particleAngularVelocityVariation = 0.5
-                    asset particleImage = @ParticleEmitterPresetTextures/Fall/MapleLeaf.png@
+                    asset particleImage = @ParticleEmitterPresetTextures/Spring/cherryblossompetal.png@
                     double particleLifeSpan = 3
                     double particleLifeSpanVariation = 0.2
                     float particleMass = 1
