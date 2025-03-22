@@ -15,7 +15,7 @@ struct ContentView: View {
             Text("Spacial Camp ")
                 .font(.extraLargeTitle)
             
-            Model3D(named: "Immersive", bundle: realityKitContentBundle) { model in
+            Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
                 model
                     .resizable()
                     .scaledToFit()
