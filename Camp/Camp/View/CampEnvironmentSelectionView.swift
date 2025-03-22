@@ -1,6 +1,8 @@
 import SwiftUI
 
 enum CampEnvironment: String, CaseIterable {
+    var id: String { rawValue }
+    
     case spring = "Spring"
     case summer = "Summer"
     case autumn = "Autumn"
@@ -11,12 +13,14 @@ enum CampEnvironment: String, CaseIterable {
 struct CampEnvironmentSelectionView: View {
     var body: some View {
         NavigationStack {
-            HStack(spacing: 40) {
-                CampEnvironmentItemView(.spring)
-                CampEnvironmentItemView(.summer)
-                CampEnvironmentItemView(.autumn)
-                CampEnvironmentItemView(.winter)
-                CampEnvironmentItemView(.space)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 40) {
+                    ForEach(CampEnvironment.allCases, id: \.id) { environment in
+                        CampEnvironmentItemView(environment)
+                            .frame(width: 300, height: 400)
+                    }
+                }
+                .padding(.horizontal, 40)
             }
             .navigationTitle("Environments")
         }
