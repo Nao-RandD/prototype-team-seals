@@ -3,6 +3,7 @@ import RealityKit
 
 /// A gesture modifier handling drag, rotate, magnify gestures.
 struct CraftGesture: ViewModifier {
+    private let moveSpeed: Float = 0.5
 
     @State var isActive: Bool = false	
     @State var initialPosition: SIMD3<Float> = .zero
@@ -17,9 +18,6 @@ struct CraftGesture: ViewModifier {
             .gesture(rotateGesture)
     }
     
-    /// Drag gesture
-    ///
-    /// See also [Improved Drag Gesture](https://stepinto.vision/example-code/improved-drag-gesture/)
     var dragGesture: some Gesture {
         DragGesture()
             .targetedToAnyEntity()
@@ -28,7 +26,11 @@ struct CraftGesture: ViewModifier {
                 
                 // Update position from drag gesture
                 let movement = value.convert(value.gestureValue.translation3D, from: .local, to: .scene)
-                let newPosition = initialPosition + movement
+                var newPosition = initialPosition + movement * moveSpeed
+                
+                // Fix entities on the ground
+                newPosition.y = 0
+                
                 value.entity.position = newPosition
             }
             .onEnded { value in
@@ -55,9 +57,6 @@ struct CraftGesture: ViewModifier {
             }
     }
     
-    /// Simultaneously combined rotate and magnify gesture
-    ///
-    /// See also [Simultaneously Combine Gestures](https://stepinto.vision/example-code/simultaneously-combine-gestures/)
     var rotateAndMagnifyGesture: some Gesture {
         RotateGesture3D(constrainedToAxis: .y)
             .simultaneously(with: MagnifyGesture())

@@ -6,13 +6,14 @@ struct CampApp: App {
     @State private var appModel = AppModel()
 
     var body: some Scene {
-        WindowGroup {
+        WindowGroup(id: appModel.titleWindowID) {
             ContentView()
                 .environment(appModel)
         }
         
         WindowGroup(id: appModel.environmentSelectionWindowID) {
             CampEnvironmentSelectionView()
+                .environment(appModel)
         }
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
@@ -25,6 +26,6 @@ struct CampApp: App {
                     appModel.immersiveSpaceState = .closed
                 }
         }
-        .immersionStyle(selection: .constant(.mixed ), in: .mixed)
+        .immersionStyle(selection: .constant(.full ), in: .full)
     }
 }

@@ -4,13 +4,40 @@ import SwiftUI
 @MainActor
 @Observable
 class AppModel {
+    let titleWindowID = "TitleWindow"
     let environmentSelectionWindowID = "EnvironmentSelectionWindow"
     let immersiveSpaceID = "ImmersiveSpace"
+    
+    enum WindowState {
+        case closed
+        case open
+    }
     
     enum ImmersiveSpaceState {
         case closed
         case inTransition
         case open
     }
+    
     var immersiveSpaceState = ImmersiveSpaceState.closed
+    
+    var campEnvironment: CampEnvironment = .spring
+
+    func changeImmersiveSpaceState(_ state: ImmersiveSpaceState) {
+        immersiveSpaceState = state
+    }
+    
+    var isImmersiveSpaceOpen: Bool {
+        immersiveSpaceState == .open
+    }
+    
+    var isImmersiveSpaceInTransition: Bool {
+        immersiveSpaceState == .inTransition
+    }
+    
+    var isImmersiveSpaceClosed: Bool {
+        immersiveSpaceState == .closed
+    }
+
+    let soundStorage = SoundStorage()
 }
