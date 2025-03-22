@@ -12,15 +12,21 @@ import RealityKitContent
 struct ContentView: View {
 
     var body: some View {
-        VStack {
+        VStack(spacing: 40) {
             Text("Spacial Camp ")
                 .font(.extraLargeTitle)
+            
+            Model3D(named: "Immersive", bundle: realityKitContentBundle) { model in
+                model
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 400, height: 400)
+                    .rotation3DEffect(.init(radians: .pi), axis: (x: 0, y: 1, z: 0))
+            } placeholder: {
+                ProgressView()
+            }
+            
             ToggleImmersiveSpaceButton()
-            Model3D(named: "Immersive", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
-                .scaleEffect(x: 0.5, y: 0.5, z: 0.5)
-
-
         }
         .padding()
     }
