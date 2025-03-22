@@ -15,8 +15,9 @@ struct ImmersiveView: View {
                 immersiveContentEntity.scale *= 10
                 content.add(immersiveContentEntity)
 
-                // Put skybox here.  See example in World project available at
-                // https://developer.apple.com/
+                if let skybox = Entity.createSkybox(name: "Skybox") {
+                    content.add(skybox)
+                }
                 
                 let lightEntity = Entity()
                 let redLightComponent = DirectionalLightComponent(
