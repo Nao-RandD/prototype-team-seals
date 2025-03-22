@@ -11,16 +11,17 @@ struct CampEnvironmentSelectionView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 40) {
                     ForEach(CampEnvironment.allCases, id: \.id) { environment in
-                        CampEnvironmentItemView(environment) {
+                        CampEnvironmentItemView(environment, isSelected: appModel.campEnvironment == environment) {
                             appModel.campEnvironment = environment
+                            UserDefaultsWrapper.saveCampEnvironment(environment)
                         }
-                        .frame(width: 300, height: 400)
                     }
                 }
                 .padding(.horizontal, 40)
             }
             .navigationTitle("Environments")
         }
+        .frame(width: 600, height: 400)
         .onAppear {
             appModel.changeWindowState(.open, type: .environmentSelection)
         }
@@ -32,4 +33,5 @@ struct CampEnvironmentSelectionView: View {
 
 #Preview {
     CampEnvironmentSelectionView()
+        .environment(AppModel())
 }

@@ -6,7 +6,6 @@ import RealityKitContent
 @MainActor
 final class ImmersiveViewModel {
     var rootEntity: Entity?
-    var attachments: RealityViewAttachments?
     
     func setup(appModel: AppModel, environment: CampEnvironment) async {
         rootEntity?.children.removeAll()
@@ -21,10 +20,5 @@ final class ImmersiveViewModel {
 
         let light = Entity.createDirectionalLight()
         rootEntity?.addChild(light)
-
-        if let menu = attachments?.entity(for: "Menu") {
-            menu.position = [0, 0.5, -0.5]
-            rootEntity?.addChild(menu)
-        }
     }
 }
