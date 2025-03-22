@@ -20,6 +20,7 @@ struct ImmersiveView: View {
             
             await viewModel.setup(appModel: appModel, environment: .spring)
         } attachments: {
+            // TODO: Changed attachments to window
             Attachment(id: "Menu") {
                 VStack(spacing: 40) {
                     Button {

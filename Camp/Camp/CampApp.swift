@@ -15,6 +15,7 @@ struct CampApp: App {
             CampEnvironmentSelectionView()
                 .environment(appModel)
         }
+        .windowResizability(.contentSize)
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
             ImmersiveView()

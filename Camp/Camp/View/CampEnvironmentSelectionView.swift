@@ -14,13 +14,13 @@ struct CampEnvironmentSelectionView: View {
                         CampEnvironmentItemView(environment) {
                             appModel.campEnvironment = environment
                         }
-                        .frame(width: 300, height: 400)
                     }
                 }
                 .padding(.horizontal, 40)
             }
             .navigationTitle("Environments")
         }
+        .frame(width: 600, height: 400)
         .onAppear {
             appModel.changeWindowState(.open, type: .environmentSelection)
         }
@@ -32,4 +32,5 @@ struct CampEnvironmentSelectionView: View {
 
 #Preview {
     CampEnvironmentSelectionView()
+        .environment(AppModel())
 }

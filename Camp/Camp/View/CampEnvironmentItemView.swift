@@ -11,20 +11,29 @@ struct CampEnvironmentItemView: View {
         self.onSelect = onSelect
     }
     
-    var body: some View {
-        ZStack(alignment: .bottom) {
+    var body: some View {        
+        ZStack {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(.black)
-                .frame(width: 200, height: 200)
+                .foregroundColor(environment.color)
             
-            Button {
-                onSelect()
-            } label: {
+            VStack(spacing: 0) {
                 Text(environment.rawValue)
-                    .padding(.vertical, 16)
+                    .font(.system(size: 24, weight: .bold))
+                
+                Image(environment.imageName)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 120, height: 120)
             }
-            .padding(16)
+            .padding(.top, 24)
+            .padding(.bottom, 16)
         }
+        .frame(width: 200, height: 200)
+        .onTapGesture {
+            onSelect()
+        }
+        .hoverEffect()
+
     }
 }
 
