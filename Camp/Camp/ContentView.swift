@@ -13,12 +13,14 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Model3D(named: "Scene", bundle: realityKitContentBundle)
-                .padding(.bottom, 50)
-
-            Text("Hello, world!")
-
+            Text("Spacial Camp ")
+                .font(.extraLargeTitle)
             ToggleImmersiveSpaceButton()
+            Model3D(named: "Immersive", bundle: realityKitContentBundle)
+                .padding(.bottom, 50)
+                .scaleEffect(x: 0.5, y: 0.5, z: 0.5)
+
+
         }
         .padding()
     }
