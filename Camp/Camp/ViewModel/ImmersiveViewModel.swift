@@ -24,7 +24,7 @@ final class ImmersiveViewModel {
         rootEntity?.addChild(light)
 
         if let menu = attachments?.entity(for: "Menu") {
-            menu.position = [0, 0.5, -0.2]
+            menu.position = [0, 0.5, -0.5]
             rootEntity?.addChild(menu)
         }
 

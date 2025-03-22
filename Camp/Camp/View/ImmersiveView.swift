@@ -21,7 +21,7 @@ struct ImmersiveView: View {
             await viewModel.setup(appModel: appModel, environment: .spring)
         } attachments: {
             Attachment(id: "Menu") {
-                VStack {
+                VStack(spacing: 40) {
                     Button {
                         openWindow(id: appModel.environmentSelectionWindowID)
                     } label: {
@@ -29,6 +29,7 @@ struct ImmersiveView: View {
                             .font(.largeTitle)
                             .padding(40)
                     }
+                    .disabled(appModel.isWindowOpen(type: .environmentSelection))
                     
                     Button {
                         Task {
