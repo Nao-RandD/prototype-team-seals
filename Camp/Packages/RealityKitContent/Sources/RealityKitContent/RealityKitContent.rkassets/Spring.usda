@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Firebase_transform", "Camp_____Tree", "Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder", "SoundTimeline", "se3_firework_mp3", "BGM_1_mp3", "RCP_BehaviorsContainer", "OnAddedToScene", "ChannelAudio"]
+    reorder nameChildren = ["Ground_transform", "Firebase_transform", "Camp_____Tree", "Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder", "SoundTimeline", "BGM_1_mp3", "RCP_BehaviorsContainer", "OnAddedToScene", "se3_firework_mp32"]
     def Cylinder "Cylinder" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -583,6 +583,12 @@ def Xform "Root"
     {
         uniform asset file = @BGM-1.mp3@
         uniform bool shouldLoop = 1
+    }
+
+    def Xform "Ground_transform" (
+        active = true
+    )
+    {
     }
 }
 
