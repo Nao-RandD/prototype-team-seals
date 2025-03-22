@@ -33,6 +33,7 @@ struct CampApp: App {
                 .onDisappear {
                     appModel.immersiveSpaceState = .closed
                 }
+                .modelContainer(for: Craft.self)
         }
         .immersionStyle(selection: .constant(.full ), in: .full)
     }
