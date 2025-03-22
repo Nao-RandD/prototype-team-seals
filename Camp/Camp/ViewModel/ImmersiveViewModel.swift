@@ -11,8 +11,7 @@ final class ImmersiveViewModel {
     func setup(appModel: AppModel, environment: CampEnvironment) async {
         rootEntity?.children.removeAll()
         
-        // TODO: Switch scene name from environment
-        guard let scene = try? await Entity(named: "Spring", in: realityKitContentBundle) else { return }
+        guard let scene = try? await Entity(named: environment.rawValue, in: realityKitContentBundle) else { return }
         scene.scale *= 10
         rootEntity?.addChild(scene)
 
@@ -27,10 +26,5 @@ final class ImmersiveViewModel {
             menu.position = [0, 0.5, -0.5]
             rootEntity?.addChild(menu)
         }
-
-        try? await appModel.soundStorage.load()
-        let soundEntity = appModel.soundStorage.soundEntity
-        rootEntity?.addChild(soundEntity)
-        await appModel.soundStorage.play(sound: .animalCrossing)
     }
 }
