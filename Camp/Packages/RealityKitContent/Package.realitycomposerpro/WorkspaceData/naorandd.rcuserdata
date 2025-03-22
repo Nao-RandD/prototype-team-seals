@@ -1,7 +1,8 @@
 {
-  "advancedEditorSelectedIdentifier" : "BehaviorsPluginID",
+  "advancedEditorSelectedIdentifier" : "ProjectBrowser",
   "openSceneRelativePaths" : [
-    "Immersive.usda"
+    "Immersive.usda",
+    "Placeholder.usda"
   ],
   "recentIdentifiers" : {
     "AF09ED6F-1707-48FD-8720-65B998362C09" : [
@@ -73,6 +74,30 @@
           -1.0497239,
           1.4373306,
           1.8764617,
+          1
+        ]
+      }
+    ],
+    "86FF638F-A196-49CD-BE2E-B4780743AC10" : [
+      {
+        "date" : 764329157.016334,
+        "title" : "Untitled",
+        "transform" : [
+          0.99849296,
+          -1.0366432e-09,
+          0.054880306,
+          0,
+          0.019127652,
+          0.9372963,
+          -0.34800872,
+          0,
+          -0.051439103,
+          0.34853396,
+          0.9358837,
+          0,
+          -0.13303696,
+          0.90141344,
+          2.4204757,
           1
         ]
       }
@@ -303,5 +328,5 @@
   "sceneViewportBackgroundColors" : {
 
   },
-  "selectedSceneRelativePath" : "Immersive.usda"
+  "selectedSceneRelativePath" : "Placeholder.usda"
 }
