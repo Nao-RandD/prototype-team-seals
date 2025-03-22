@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Camp_____Tree", "Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder"]
+    reorder nameChildren = ["Firebase_transform", "Camp_____10fps", "Camp_____Tree", "Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder"]
     def Cylinder "Cylinder" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -65,7 +65,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, 3.1415927, 0)
         }
-        prepend references = @Camp_Tent.usdz@
+        references = @Camp_Tent.usdz@
     )
     {
         quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
@@ -82,19 +82,43 @@ def Xform "Root"
             quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (2.2470007, 1.2955035, 2.0480008)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.013494313, 0.63638, -0.018732846)
+                }
+            }
+        }
     }
 
     def "Camp_Meal" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-2.512148e-15, 0, -8.429369e-8)
+            float3 rotationEulerHint = (-4.1023203e-15, -0.52359885, -8.429369e-8)
         }
         references = @Camp Meal.usdz@
     )
     {
-        quatf xformOp:orient = (1, -1.256074e-15, 5.2939556e-23, -4.2146844e-8)
+        quatf xformOp:orient = (0.9659258, -1.09084075e-8, -0.25881904, -4.0710724e-8)
         float3 xformOp:scale = (0.1, 0.1, 0.1)
-        float3 xformOp:translate = (0, 6.101344e-8, -0.1)
+        float3 xformOp:translate = (-0.12510276, 6.984919e-8, -0.14657386)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         over "CampTool_002" (
@@ -106,19 +130,43 @@ def Xform "Root"
             quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.9000001, 0.76013684, 0.7000002)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.0144661665, 0.3830765, 0.04274726)
+                }
+            }
+        }
     }
 
     def "Camp_Chair_2" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-1.2560737e-15, 0, -4.214684e-8)
+            float3 rotationEulerHint = (0, 1.2217305, -4.214683e-8)
         }
-        prepend references = @Camp_Chair_2.usdz@
+        references = @Camp_Chair_2.usdz@
     )
     {
-        quatf xformOp:orient = (1, -6.2803687e-16, 1.3234885e-23, -2.107342e-8)
+        quatf xformOp:orient = (0.81915206, 1.2087215e-8, 0.5735764, -1.7262332e-8)
         float3 xformOp:scale = (0.1, 0.1, 0.1)
-        float3 xformOp:translate = (-0.12, 2.3283064e-10, -0.09999934)
+        float3 xformOp:translate = (-0.018766612, 1.4901161e-8, -0.019024888)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         over "CampTool_003" (
@@ -133,6 +181,8 @@ def Xform "Root"
 
         def RealityKitComponent "InputTarget"
         {
+            bool allowsDirectInput = 0
+            bool allowsIndirectInput = 1
             uniform token info:id = "RealityKit.InputTarget"
         }
 
@@ -161,7 +211,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, -1.5707963, 0)
         }
-        prepend references = @Camp_Chair_1.usdz@
+        references = @Camp_Chair_1.usdz@
     )
     {
         quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
@@ -209,7 +259,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, 0.69813174, 0)
         }
-        prepend references = @Camp Cooler Box.usdz@
+        references = @Camp Cooler Box.usdz@
     )
     {
         quatf xformOp:orient = (0.9396926, 0, 0.34202012, 0)
@@ -226,6 +276,30 @@ def Xform "Root"
             quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.50999993, 0.44000027, 0.93461394)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.013678372, 0.22077198, -0.012143061)
+                }
+            }
+        }
     }
 
     def "Camp_Cycling_Big" (
@@ -233,7 +307,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, -0.78539807, 0)
         }
-        prepend references = @Camp Cycling Big.usdz@
+        references = @Camp Cycling Big.usdz@
     )
     {
         quatf xformOp:orient = (0.92387956, 0, -0.3826834, 0)
@@ -250,11 +324,35 @@ def Xform "Root"
             quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.48000008, 1.0300002, 1.730001)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.013696142, 0.52132165, -0.100375056)
+                }
+            }
+        }
     }
 
     def "Camp_____Tree" (
         active = true
-        prepend references = @Campモデル Tree.usdz@
+        references = @Campモデル Tree.usdz@
     )
     {
         float3 xformOp:scale = (0.1, 0.1, 0.1)
@@ -269,6 +367,77 @@ def Xform "Root"
         {
             quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def Xform "Firebase_transform" (
+        active = true
+    )
+    {
+        reorder nameChildren = ["se3_firework_mp3", "Camp_____10fps", "InputTarget", "Collider"]
+        float3 xformOp:translate = (0, 0, -0.11928862)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def "Camp_____10fps" (
+            active = true
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+            references = @Campモデル 10fps.usdz@
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            float3 xformOp:scale = (0.1, 0.1, 0.1)
+            float3 xformOp:translate = (-9.778887e-9, -7.450581e-9, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+            over "Object_5" (
+                customData = {
+                    float3 rotationEulerHint = (-4.7123885, 0, 0)
+                }
+            )
+            {
+                quatf xformOp:orient = (0.70710677, 0.70710677, 0, 0)
+                float3 xformOp:scale = (0.012423359, 0.0124233635, 0.0124233635)
+                double3 xformOp:translate = (0, -0.025398720055818558, 3.4125424708264518e-9)
+                uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+            }
+
+            def RealityKitComponent "SpatialAudio"
+            {
+                uniform token info:id = "RealityKit.SpatialAudio"
+            }
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.086172976, 0.10942629, 0.061884183)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-1.4901161e-8, 0.051262632, 0.0050797444)
+                }
+            }
+        }
+
+        def RealityKitAudioFile "se3_firework_mp3"
+        {
+            uniform asset file = @se3_firework.mp3@
+            uniform bool shouldLoop = 1
+            uniform bool shouldRandomizeStartTime = 1
         }
     }
 }
