@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder"]
+    reorder nameChildren = ["Camp_____Tree", "Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder"]
     def Cylinder "Cylinder" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -242,6 +242,26 @@ def Xform "Root"
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
         over "CampTool_009" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def "Camp_____Tree" (
+        active = true
+        prepend references = @Campモデル Tree.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (0.17186469, 1.3969839e-8, 0.047131356)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "_400_primitive" (
             customData = {
                 float3 rotationEulerHint = (-1.5707964, 0, 0)
             }
