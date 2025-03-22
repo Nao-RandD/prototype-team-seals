@@ -63,57 +63,175 @@ def Xform "Root"
     def "Camp_Tent" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-1.5707964, 0, 0)
+            float3 rotationEulerHint = (0, 3.1415927, 0)
         }
         prepend references = @Camp_Tent.usdz@
     )
     {
-        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        quatf xformOp:orient = (-4.371139e-8, 0, 1, 0)
         float3 xformOp:scale = (0.1, 0.1, 0.1)
-        float3 xformOp:translate = (-0.13393125, -1.1285052e-9, 0.008995116)
+        float3 xformOp:translate = (0, 5.075708e-8, 0.18)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "geometry_4682_001" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def "Camp_Meal" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-1.5707966, 0.78539824, -8.429369e-8)
+            float3 rotationEulerHint = (-2.512148e-15, 0, -8.429369e-8)
         }
         prepend references = @Camp_Meal.usdz@
     )
     {
-        quatf xformOp:orient = (0.65328145, -0.65328157, 0.27059805, 0.27059805)
+        quatf xformOp:orient = (1, -1.256074e-15, 5.2939556e-23, -4.2146844e-8)
         float3 xformOp:scale = (0.1, 0.1, 0.1)
-        float3 xformOp:translate = (0.123430714, 4.9360096e-8, 0.10509091)
+        float3 xformOp:translate = (0, 6.101344e-8, -0.1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "CampTool_002" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
     }
 
     def "Camp_Chair_2" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-1.5707966, -0.7853981, -4.2146844e-8)
+            float3 rotationEulerHint = (-1.2560737e-15, 0, -4.214684e-8)
         }
         prepend references = @Camp_Chair_2.usdz@
     )
     {
-        quatf xformOp:orient = (0.6532814, -0.6532816, -0.270598, -0.2705981)
+        quatf xformOp:orient = (1, -6.2803687e-16, 1.3234885e-23, -2.107342e-8)
         float3 xformOp:scale = (0.1, 0.1, 0.1)
-        float3 xformOp:translate = (0.008755675, 5.122274e-9, 0.12017129)
+        float3 xformOp:translate = (-0.12, 2.3283064e-10, -0.09999934)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "CampTool_003" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.7600002, 0.89, 0.73000026)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.02228111, 0.44829047, -0.000008434057)
+                }
+            }
+        }
     }
 
     def "Camp_Chair_1" (
         active = true
         customData = {
-            float3 rotationEulerHint = (-1.5707964, 0, 0)
+            float3 rotationEulerHint = (0, -1.5707963, 0)
         }
         prepend references = @Camp_Chair_1.usdz@
     )
     {
-        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        quatf xformOp:orient = (0.70710677, 0, -0.70710677, 0)
         float3 xformOp:scale = (0.1, 0.1, 0.1)
-        float3 xformOp:translate = (0.14876717, 0, 0)
+        float3 xformOp:translate = (0.12, 0, -0.1)
         uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "CampTool_001" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def RealityKitComponent "InputTarget"
+        {
+            uniform token info:id = "RealityKit.InputTarget"
+        }
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (1.0794389, 0.8699998, 0.53212106)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.14000706, 0.43792376, 0.010489956)
+                }
+            }
+        }
+    }
+
+    def "SkyDome" (
+        active = true
+        prepend references = @SkyDome.usdz@
+    )
+    {
+        float3 xformOp:scale = (0.01, 0.01, 0.01)
+        float3 xformOp:translate = (0, -0.02, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+    }
+
+    def Xform "DirectionalLight" (
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 0, 0)
+        }
+    )
+    {
+        quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+        float3 xformOp:translate = (0, 10, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "DirectionalLight"
+        {
+            token info:id = "RealityKit.DirectionalLight"
+
+            def RealityKitStruct "Shadow"
+            {
+            }
+        }
     }
 }
 
