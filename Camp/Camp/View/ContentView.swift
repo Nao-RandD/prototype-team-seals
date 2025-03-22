@@ -41,6 +41,7 @@ struct ContentView: View {
                     
                     // Close title window after opened immersive space
                     dismissWindow(id: appModel.titleWindowID)
+                    openWindow(id: appModel.immersiveMenuWindowID)
                 }
             }
             .disabled(appModel.isImmersiveSpaceInTransition)

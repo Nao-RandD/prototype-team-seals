@@ -21,13 +21,14 @@ class AppModel {
     }
     
     let titleWindowID = "TitleWindow"
+    let immersiveMenuWindowID = "ImmersiveMenuWindow"
     let environmentSelectionWindowID = "EnvironmentSelectionWindow"
     let immersiveSpaceID = "ImmersiveSpace"
 
     let soundStorage = SoundStorage()
     
     var immersiveSpaceState = ImmersiveSpaceState.closed
-    var campEnvironment: CampEnvironment = .spring
+    var campEnvironment: CampEnvironment = UserDefaultsWrapper.campEnvironment()
     
     private var titleWindowState = WindowState.closed
     private var environmentSelectionWindowState = WindowState.closed
