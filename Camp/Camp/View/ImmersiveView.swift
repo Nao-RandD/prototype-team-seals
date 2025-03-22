@@ -1,12 +1,16 @@
 import SwiftUI
 import RealityKit
 import RealityKitContent
+import SwiftData
 
 struct ImmersiveView: View {
     @Environment(AppModel.self) var appModel
+    @Environment(\.modelContext) var modelContext
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
+    
+    @Query private var crafts: [Craft]
     
     @State var viewModel: ImmersiveViewModel = .init()
     @State var skybox: Entity = .init()
@@ -17,11 +21,11 @@ struct ImmersiveView: View {
             viewModel.rootEntity = entity
             content.add(entity)
             
-            await viewModel.setup(appModel: appModel, environment: appModel.campEnvironment)
+            await viewModel.setup(appModel: appModel, environment: appModel.campEnvironment, crafts: crafts)
         }
         .onChange(of: appModel.campEnvironment, { _, environment in
             Task {
-                await viewModel.setup(appModel: appModel, environment: environment)
+                await viewModel.setup(appModel: appModel, environment: environment, crafts: crafts)
             }
         })
         .onAppear {
@@ -31,7 +35,17 @@ struct ImmersiveView: View {
             appModel.changeImmersiveSpaceState(.closed)
         }
         .craftGesture { craft in
-            // TODO: Save craft info
+            saveCraft(craft)
+        }
+    }
+    
+    private func saveCraft(_ craft: Craft) {
+        modelContext.insert(craft)
+        
+        if modelContext.hasChanges {
+            try? modelContext.save()
+        } else {
+            print("modelContext has no changes")
         }
     }
 }
