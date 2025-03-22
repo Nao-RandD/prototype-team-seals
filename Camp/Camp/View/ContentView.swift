@@ -24,12 +24,12 @@ struct ContentView: View {
             } placeholder: {
                 ProgressView()
             }
-            
-            Button("Enter") {
+
+            Button {
                 Task { @MainActor in
                     guard appModel.isImmersiveSpaceClosed else { return }
                     appModel.changeImmersiveSpaceState(.inTransition)
-                    
+
                     switch await openImmersiveSpace(id: appModel.immersiveSpaceID) {
                     case .opened:
                         break
@@ -38,11 +38,16 @@ struct ContentView: View {
                     @unknown default:
                         appModel.changeImmersiveSpaceState(.closed)
                     }
-                    
+
                     // Close title window after opened immersive space
                     dismissWindow(id: appModel.titleWindowID)
                     openWindow(id: appModel.immersiveMenuWindowID)
                 }
+            } label: {
+                Text("Enter")
+                    .font(.title)
+                    .padding(.horizontal, 60)
+                    .padding(.vertical, 30)
             }
             .disabled(appModel.isImmersiveSpaceInTransition)
             .accessibilityLabel("開始")
