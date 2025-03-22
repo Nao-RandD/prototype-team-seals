@@ -12,7 +12,7 @@ final class ImmersiveViewModel {
         rootEntity?.children.removeAll()
         
         // TODO: Switch scene name from environment
-        guard let scene = try? await Entity(named: "Immersive", in: realityKitContentBundle) else { return }
+        guard let scene = try? await Entity(named: "Spring", in: realityKitContentBundle) else { return }
         scene.scale *= 10
         rootEntity?.addChild(scene)
 
