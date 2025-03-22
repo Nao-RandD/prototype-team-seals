@@ -28,4 +28,17 @@ enum CampEnvironment: String, CaseIterable {
             return .blue
         }
     }
+
+    var accecibilityLabel: String {
+        switch self {
+        case .spring:
+            return "春空間"
+        case .summer:
+            return "夏空間"
+        case .autumn:
+            return "秋空間"
+        case .winter:
+            return "冬空間"
+        }
+    }
 }

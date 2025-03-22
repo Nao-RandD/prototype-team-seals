@@ -45,6 +45,7 @@ struct ContentView: View {
                 }
             }
             .disabled(appModel.isImmersiveSpaceInTransition)
+            .accessibilityLabel("開始")
         }
         .padding()
         .onAppear {

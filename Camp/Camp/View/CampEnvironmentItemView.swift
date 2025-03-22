@@ -45,6 +45,8 @@ struct CampEnvironmentItemView: View {
             }
         }
         .frame(width: 200, height: 200)
+        // TODO:　ラベル
+        .accessibilityLabel(environment.accecibilityLabel)
         .onTapGesture {
             onTap()
         }
