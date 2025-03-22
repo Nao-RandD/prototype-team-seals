@@ -12,39 +12,12 @@ struct ImmersiveView: View {
     @State var skybox: Entity = .init()
 
     var body: some View {
-        RealityView { content, attachments  in
+        RealityView { content  in
             let entity = Entity()
             viewModel.rootEntity = entity
-            viewModel.attachments = attachments
             content.add(entity)
             
-            await viewModel.setup(appModel: appModel, environment: .spring)
-        } attachments: {
-            // TODO: Changed attachments to window
-            Attachment(id: "Menu") {
-                VStack(spacing: 40) {
-                    Button {
-                        openWindow(id: appModel.environmentSelectionWindowID)
-                    } label: {
-                        Text("Changed Environment")
-                            .font(.largeTitle)
-                            .padding(40)
-                    }
-                    .disabled(appModel.isWindowOpen(type: .environmentSelection))
-                    
-                    Button {
-                        Task {
-                            appModel.soundStorage.stopAllAudio()
-                            await dismissImmersiveSpace()
-                            openWindow(id: appModel.titleWindowID)
-                        }
-                    } label: {
-                        Text("Exit")
-                            .font(.largeTitle)
-                            .padding(40)
-                    }
-                }
-            }
+            await viewModel.setup(appModel: appModel, environment: appModel.campEnvironment)
         }
         .onChange(of: appModel.campEnvironment, { _, environment in
             Task {

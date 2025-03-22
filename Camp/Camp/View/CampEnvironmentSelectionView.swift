@@ -11,8 +11,9 @@ struct CampEnvironmentSelectionView: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 40) {
                     ForEach(CampEnvironment.allCases, id: \.id) { environment in
-                        CampEnvironmentItemView(environment) {
+                        CampEnvironmentItemView(environment, isSelected: appModel.campEnvironment == environment) {
                             appModel.campEnvironment = environment
+                            UserDefaultsWrapper.saveCampEnvironment(environment)
                         }
                     }
                 }

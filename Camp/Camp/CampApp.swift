@@ -11,6 +11,13 @@ struct CampApp: App {
                 .environment(appModel)
         }
         
+        WindowGroup(id: appModel.immersiveMenuWindowID) {
+            ImmersiveMenuView()
+                .environment(appModel)
+        }
+        .windowStyle(.plain)
+        .windowResizability(.contentSize)
+        
         WindowGroup(id: appModel.environmentSelectionWindowID) {
             CampEnvironmentSelectionView()
                 .environment(appModel)

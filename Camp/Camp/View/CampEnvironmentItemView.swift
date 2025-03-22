@@ -2,13 +2,17 @@ import SwiftUI
 import RealityKit
 
 struct CampEnvironmentItemView: View {
-    var onSelect: () -> Void
+    @Environment(AppModel.self) var appModel
+    
+    var isSelected: Bool
+    var onTap: () -> Void
     
     private var environment: CampEnvironment
     
-    init(_ environment: CampEnvironment, onSelect: @escaping () -> Void) {
+    init(_ environment: CampEnvironment, isSelected: Bool, onTap: @escaping () -> Void) {
         self.environment = environment
-        self.onSelect = onSelect
+        self.isSelected = isSelected
+        self.onTap = onTap
     }
     
     var body: some View {        
@@ -27,16 +31,31 @@ struct CampEnvironmentItemView: View {
             }
             .padding(.top, 24)
             .padding(.bottom, 16)
+            
+            if isSelected {
+                RoundedRectangle(cornerRadius: 16)
+                    .foregroundColor(.black)
+                    .opacity(0.5)
+                    .overlay {
+                        Image(systemName: "checkmark.circle.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 40, height: 40)
+                    }
+            }
         }
         .frame(width: 200, height: 200)
         .onTapGesture {
-            onSelect()
+            onTap()
         }
         .hoverEffect()
-
+        .disabled(isSelected)
     }
 }
 
 #Preview {
-    CampEnvironmentItemView(.spring) {}
+    HStack {
+        CampEnvironmentItemView(.spring, isSelected: false) {}
+        CampEnvironmentItemView(.spring, isSelected: true) {}
+    }
 }
