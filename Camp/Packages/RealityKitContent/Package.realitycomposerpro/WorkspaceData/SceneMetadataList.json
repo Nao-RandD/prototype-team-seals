@@ -40,7 +40,7 @@
       [
         "86FF638F-A196-49CD-BE2E-B4780743AC10",
         "Root",
-        "Camp_Tent"
+        "BaseTransform"
       ],
       {
         "isExpanded" : true,
@@ -80,6 +80,15 @@
       },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Camp______"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root"
       ],
       {
@@ -110,6 +119,16 @@
         "Root",
         "Firebase_Animation_Sound",
         "Track"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Camp______",
+        "_materials"
       ],
       {
         "isExpanded" : true,
