@@ -32,6 +32,11 @@ struct ImmersiveView: View {
                     menu.position = [0, 0.5, -0.2]
                     content.add(menu)
                 }
+
+                try? await appModel.soundStorage.load()
+                let soundEntity = appModel.soundStorage.soundEntity
+                content.add(soundEntity)
+                await appModel.soundStorage.play(sound: .animalCrossing)
             }
         } attachments: {
             Attachment(id: "Menu") {
@@ -46,6 +51,7 @@ struct ImmersiveView: View {
                     
                     Button {
                         Task {
+                            appModel.soundStorage.stopAllAudio()
                             await dismissImmersiveSpace()
                             openWindow(id: appModel.titleWindowID)
                         }

@@ -19,7 +19,7 @@ class AppModel {
         case open
     }
     var immersiveSpaceState = ImmersiveSpaceState.closed
-    
+
     func changeImmersiveSpaceState(_ state: ImmersiveSpaceState) {
         immersiveSpaceState = state
     }
@@ -35,4 +35,6 @@ class AppModel {
     var isImmersiveSpaceClosed: Bool {
         immersiveSpaceState == .closed
     }
+
+    let soundStorage = SoundStorage()
 }
