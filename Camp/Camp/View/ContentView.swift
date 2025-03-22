@@ -46,6 +46,12 @@ struct ContentView: View {
             .disabled(appModel.isImmersiveSpaceInTransition)
         }
         .padding()
+        .onAppear {
+            appModel.changeWindowState(.open, type: .title)
+        }
+        .onDisappear {
+            appModel.changeWindowState(.closed, type: .title)
+        }
     }
 }
 
