@@ -4,42 +4,45 @@ import RealityKit
 struct CampEnvironmentItemView: View {
     @State private var viewModel = CampEnvironmentItemViewModel()
     
+    var onSelect: () -> Void
+    
     private var environment: CampEnvironment
     
-    init(_ environment: CampEnvironment) {
+    init(_ environment: CampEnvironment, onSelect: @escaping () -> Void) {
         self.environment = environment
+        self.onSelect = onSelect
     }
     
     var body: some View {
-//        ZStack(alignment: .bottom) {
-//            RoundedRectangle(cornerRadius: 16)
-//                .foregroundStyle(.black)
-//                .frame(width: 200, height: 200)
-//            
-//            Button {
-//                
-//            } label: {
-//                Text(environment.rawValue)
-//                    .padding(.vertical, 16)
-//            }
-//            .padding(16)
-//        }
-        ZStack {
-            GeometryReader3D { geometry in
-                RealityView { content in
-                    let entity = Entity()
-                    viewModel.rootEntity = entity
-                    content.add(entity)
-                    
-                    viewModel.setupPortal(name: "skybox")
-                } update: { content in
-                    let size = content.convert(geometry.size, from: .local, to: .scene)
-                    viewModel.updatePortalSize(width: size.x, height: size.y)
-                }
-                .frame(depth: 0.4)
+        ZStack(alignment: .bottom) {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundStyle(.black)
+                .frame(width: 200, height: 200)
+            
+            Button {
+                onSelect()
+            } label: {
+                Text(environment.rawValue)
+                    .padding(.vertical, 16)
             }
-            .frame(depth: 0.4)
+            .padding(16)
         }
+//        ZStack {
+//            GeometryReader3D { geometry in
+//                RealityView { content in
+//                    let entity = Entity()
+//                    viewModel.rootEntity = entity
+//                    content.add(entity)
+//                    
+//                    viewModel.setupPortal(name: "skybox")
+//                } update: { content in
+//                    let size = content.convert(geometry.size, from: .local, to: .scene)
+//                    viewModel.updatePortalSize(width: size.x, height: size.y)
+//                }
+//                .frame(depth: 0.4)
+//            }
+//            .frame(depth: 0.4)
+//        }
     }
 }
 
@@ -86,5 +89,5 @@ final class CampEnvironmentItemViewModel {
 }
 
 #Preview {
-    CampEnvironmentItemView(.spring)
+    CampEnvironmentItemView(.spring) {}
 }

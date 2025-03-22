@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Camp
-//
-//  Created by TAAT on 2025/03/22.
-//
-
 import SwiftUI
 import RealityKit
 import RealityKitContent

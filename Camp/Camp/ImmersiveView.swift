@@ -7,6 +7,8 @@ struct ImmersiveView: View {
     
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
+    
+    @State var skybox: Entity = .init()
 
     var body: some View {
         RealityView { content, attachments  in
@@ -15,8 +17,9 @@ struct ImmersiveView: View {
                 immersiveContentEntity.scale *= 10
                 content.add(immersiveContentEntity)
 
-                if let skybox = Entity.createSkybox(name: "Skybox") {
-                    content.add(skybox)
+                if let skybox = Entity.createSkybox(environment: .spring) {
+                    self.skybox.addChild(skybox)
+                    content.add(self.skybox)
                 }
                 
                 let lightEntity = Entity()
@@ -63,6 +66,12 @@ struct ImmersiveView: View {
                 }
             }
         }
+        .onChange(of: appModel.campEnvironment, { _, environment in
+            if let skybox = Entity.createSkybox(environment: environment) {
+                self.skybox.children.removeAll()
+                self.skybox.addChild(skybox)
+            }
+        })
         .onAppear {
             appModel.changeImmersiveSpaceState(.open)
         }
