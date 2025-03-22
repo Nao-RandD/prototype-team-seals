@@ -8,39 +8,17 @@ struct ImmersiveView: View {
     @Environment(\.openWindow) var openWindow
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
     
+    @State var viewModel: ImmersiveViewModel = .init()
     @State var skybox: Entity = .init()
 
     var body: some View {
         RealityView { content, attachments  in
-            // Add the initial RealityKit content
-            if let immersiveContentEntity = try? await Entity(named: "Immersive", in: realityKitContentBundle) {
-                immersiveContentEntity.scale *= 10
-                content.add(immersiveContentEntity)
-
-                if let skybox = Entity.createSkybox(environment: .spring) {
-                    self.skybox.addChild(skybox)
-                    content.add(self.skybox)
-                }
-                
-                let lightEntity = Entity()
-                let redLightComponent = DirectionalLightComponent(
-                    color: .white, intensity: 2000
-                )
-                let lightShadowComponent = DirectionalLightComponent.Shadow()
-                lightEntity.components.set([redLightComponent, lightShadowComponent])
-                lightEntity.orientation = simd_quatf(angle: -.pi/2, axis: .init(1, 0, 0))
-                content.add(lightEntity)
-                
-                if let menu = attachments.entity(for: "Menu") {
-                    menu.position = [0, 0.5, -0.2]
-                    content.add(menu)
-                }
-
-                try? await appModel.soundStorage.load()
-                let soundEntity = appModel.soundStorage.soundEntity
-                content.add(soundEntity)
-                await appModel.soundStorage.play(sound: .animalCrossing)
-            }
+            let entity = Entity()
+            viewModel.rootEntity = entity
+            viewModel.attachments = attachments
+            content.add(entity)
+            
+            await viewModel.setup(appModel: appModel, environment: .spring)
         } attachments: {
             Attachment(id: "Menu") {
                 VStack {
@@ -67,9 +45,8 @@ struct ImmersiveView: View {
             }
         }
         .onChange(of: appModel.campEnvironment, { _, environment in
-            if let skybox = Entity.createSkybox(environment: environment) {
-                self.skybox.children.removeAll()
-                self.skybox.addChild(skybox)
+            Task {
+                await viewModel.setup(appModel: appModel, environment: environment)
             }
         })
         .onAppear {
