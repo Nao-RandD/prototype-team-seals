@@ -7,7 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder"]
+    reorder nameChildren = ["Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder"]
     def Cylinder "Cylinder" (
         active = true
         prepend apiSchemas = ["MaterialBindingAPI"]
@@ -89,7 +89,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (-2.512148e-15, 0, -8.429369e-8)
         }
-        prepend references = @Camp_Meal.usdz@
+        references = @Camp Meal.usdz@
     )
     {
         quatf xformOp:orient = (1, -1.256074e-15, 5.2939556e-23, -4.2146844e-8)
@@ -201,6 +201,54 @@ def Xform "Root"
                     float3 position = (0.14000706, 0.43792376, 0.010489956)
                 }
             }
+        }
+    }
+
+    def "Camp_Cooler_Box" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, 0.69813174, 0)
+        }
+        prepend references = @Camp Cooler Box.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.9396926, 0, 0.34202012, 0)
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (0.14447848, 1.5133992e-8, -0.20547487)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "CampTool_007" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+    }
+
+    def "Camp_Cycling_Big" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (0, -0.78539807, 0)
+        }
+        prepend references = @Camp Cycling Big.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.92387956, 0, -0.3826834, 0)
+        float3 xformOp:scale = (0.1, 0.1, 0.1)
+        float3 xformOp:translate = (-0.17795287, 2.4214387e-8, 0.059407994)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        over "CampTool_009" (
+            customData = {
+                float3 rotationEulerHint = (-1.5707964, 0, 0)
+            }
+        )
+        {
+            quatf xformOp:orient = (0.70710677, -0.70710677, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
         }
     }
 }
