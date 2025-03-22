@@ -13,6 +13,7 @@ struct CampApp: App {
         
         WindowGroup(id: appModel.environmentSelectionWindowID) {
             CampEnvironmentSelectionView()
+                .environment(appModel)
         }
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
