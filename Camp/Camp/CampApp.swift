@@ -1,10 +1,3 @@
-//
-//  CampApp.swift
-//  Camp
-//
-//  Created by TAAT on 2025/03/22.
-//
-
 import SwiftUI
 
 @main
@@ -16,6 +9,10 @@ struct CampApp: App {
         WindowGroup {
             ContentView()
                 .environment(appModel)
+        }
+        
+        WindowGroup(id: appModel.environmentSelectionWindowID) {
+            CampEnvironmentSelectionView()
         }
 
         ImmersiveSpace(id: appModel.immersiveSpaceID) {
