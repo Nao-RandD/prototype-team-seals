@@ -18,7 +18,10 @@ class AppModel {
         case inTransition
         case open
     }
+    
     var immersiveSpaceState = ImmersiveSpaceState.closed
+    
+    var campEnvironment: CampEnvironment = .spring
 
     func changeImmersiveSpaceState(_ state: ImmersiveSpaceState) {
         immersiveSpaceState = state
