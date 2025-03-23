@@ -21,6 +21,8 @@ struct ImmersiveMenuView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 120, height: 120)
+                        .accessibilityRemoveTraits(.isImage)
+                        .accessibilityLabel(Text(appModel.campEnvironment.rawValue + "Image"))
                     
                     Spacer()
                 }
