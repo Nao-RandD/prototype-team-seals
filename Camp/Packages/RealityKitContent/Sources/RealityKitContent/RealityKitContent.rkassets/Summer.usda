@@ -46,7 +46,7 @@ def Xform "Root"
             def Shader "diffuseColor"
             {
                 uniform token info:id = "UsdUVTexture"
-                asset inputs:file = @ground-texture.jpeg@
+                asset inputs:file = @Earth Image.png@
                 float2 inputs:st.connect = </Root/Cylinder/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
                 color3f outputs:rgb
 
@@ -465,12 +465,6 @@ def Xform "Root"
         uniform bool shouldLoop = 1
     }
 
-    def Xform "Ground_transform" (
-        active = true
-    )
-    {
-    }
-
     def "Camp_BBQ" (
         active = true
         customData = {
@@ -550,6 +544,12 @@ def Xform "Root"
     {
         uniform asset file = @se1_bbq.mp3@
         uniform bool shouldLoop = 1
+    }
+
+    def Xform "Transform" (
+        active = true
+    )
+    {
     }
 }
 
