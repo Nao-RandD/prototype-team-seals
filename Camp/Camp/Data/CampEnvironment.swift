@@ -28,4 +28,13 @@ enum CampEnvironment: String, CaseIterable {
             return .blue
         }
     }
+    
+    var isAvailable: Bool {
+        switch self {
+        case .spring, .summer:
+            return true
+        case .autumn, .winter:
+            return false
+        }
+    }
 }

@@ -5,22 +5,22 @@ struct CampEnvironmentItemView: View {
     @Environment(AppModel.self) var appModel
     
     var isSelected: Bool
-    var onTap: () -> Void
+    var onSelect: () -> Void
     
     private var environment: CampEnvironment
     
-    init(_ environment: CampEnvironment, isSelected: Bool, onTap: @escaping () -> Void) {
+    init(_ environment: CampEnvironment, isSelected: Bool, onSelect: @escaping () -> Void) {
         self.environment = environment
         self.isSelected = isSelected
-        self.onTap = onTap
+        self.onSelect = onSelect
     }
     
     var body: some View {        
         ZStack {
-            RoundedRectangle(cornerRadius: 16)
+            Rectangle()
                 .foregroundColor(environment.color)
             
-            VStack(spacing: 0) {
+            VStack(spacing: 16) {
                 Text(environment.rawValue)
                     .font(.system(size: 24, weight: .bold))
                 
@@ -28,12 +28,31 @@ struct CampEnvironmentItemView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 120, height: 120)
+                
+                Spacer()
             }
             .padding(.top, 24)
             .padding(.bottom, 16)
             
+            VStack {
+                Spacer()
+
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.black)
+                        .opacity(0.5)
+                        .frame(height: 80)
+                    
+                    Button {
+                        onSelect()
+                    } label: {
+                        Text("Select")
+                    }
+                }
+            }
+            
             if isSelected {
-                RoundedRectangle(cornerRadius: 16)
+                Rectangle()
                     .foregroundColor(.black)
                     .opacity(0.5)
                     .overlay {
@@ -43,13 +62,20 @@ struct CampEnvironmentItemView: View {
                             .frame(width: 40, height: 40)
                     }
             }
+            
+            if !environment.isAvailable {
+                Rectangle()
+                    .foregroundColor(.black)
+                    .opacity(0.5)
+                    .overlay {
+                        Text("Coming soon...")
+                            .font(.title)
+                    }
+            }
         }
-        .frame(width: 200, height: 200)
-        .onTapGesture {
-            onTap()
-        }
-        .hoverEffect()
-        .disabled(isSelected)
+        .frame(width: 200, height: 300)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .disabled(isSelected || !environment.isAvailable)
     }
 }
 
