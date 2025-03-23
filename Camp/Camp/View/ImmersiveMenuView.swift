@@ -28,6 +28,7 @@ struct ImmersiveMenuView: View {
             } label: {
                 Image(systemName: "arrow.up.right.and.arrow.down.left")
                     .font(.title)
+                    .accessibilityLabel("ホームに戻る")
             }
         }
         .frame(width: 200, height: 300)
