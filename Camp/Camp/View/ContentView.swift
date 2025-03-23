@@ -11,25 +11,25 @@ struct ContentView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     
     var body: some View {
-        VStack(spacing: 40) {
-            Text("Spacial Camp ")
-                .font(.extraLargeTitle)
-            
-            Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
-                model
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 400, height: 400)
-                    .rotation3DEffect(.init(radians: .pi), axis: (x: 0, y: 1, z: 0))
-            } placeholder: {
-                ProgressView()
-            }
-            
-            Button("Enter") {
+        VStack(spacing: 16) {
+            Text("どこキャン")
+                .font(.system(size: 80, weight: .bold))
+            Text("- Doko Camp -")
+                .font(.extraLargeTitle2)
+                .padding(.init(top: 0, leading: 0, bottom: 32, trailing: 0))
+
+            Text("""
+                Camp Anywhere, Anytime, with Anyone!
+            """)
+                .font(.title)
+                .padding()
+                .background(.ultraThickMaterial)
+                .cornerRadius(20)
+            Button(action: {
                 Task { @MainActor in
                     guard appModel.isImmersiveSpaceClosed else { return }
                     appModel.changeImmersiveSpaceState(.inTransition)
-                    
+
                     switch await openImmersiveSpace(id: appModel.immersiveSpaceID) {
                     case .opened:
                         break
@@ -38,13 +38,28 @@ struct ContentView: View {
                     @unknown default:
                         appModel.changeImmersiveSpaceState(.closed)
                     }
-                    
+
                     // Close title window after opened immersive space
                     dismissWindow(id: appModel.titleWindowID)
                     openWindow(id: appModel.immersiveMenuWindowID)
                 }
+            }) {
+                Text("Enter")
+                    .font(.title)
+                    .padding()
             }
             .disabled(appModel.isImmersiveSpaceInTransition)
+
+            Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
+                model
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 500, height: 300)
+                    .rotation3DEffect(.init(radians: .pi), axis: (x: 0, y: 1, z: 0))
+            } placeholder: {
+                ProgressView()
+            }
+
         }
         .padding()
         .onAppear {
