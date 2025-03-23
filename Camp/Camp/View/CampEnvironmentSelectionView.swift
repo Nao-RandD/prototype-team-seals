@@ -2,11 +2,12 @@ import SwiftUI
 
 struct CampEnvironmentSelectionView: View {
     @Environment(AppModel.self) var appModel
+    @Environment(\.dismissWindow) var dismissWindow
     
     var body: some View {
         VStack(spacing: 40) {
             Text("Environments")
-                .font(.extraLargeTitle)
+                .font(.largeTitle)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 40) {
@@ -14,14 +15,15 @@ struct CampEnvironmentSelectionView: View {
                         CampEnvironmentItemView(environment, isSelected: appModel.campEnvironment == environment) {
                             appModel.campEnvironment = environment
                             UserDefaultsWrapper.saveCampEnvironment(environment)
+                            
+                            dismissWindow(id: appModel.environmentSelectionWindowID)
                         }
                     }
                 }
                 .padding(.horizontal, 40)
             }
-            .navigationTitle("Environments")
         }
-        .frame(width: 600, height: 400)
+        .frame(width: 600, height: 500)
         .onAppear {
             appModel.changeWindowState(.open, type: .environmentSelection)
         }

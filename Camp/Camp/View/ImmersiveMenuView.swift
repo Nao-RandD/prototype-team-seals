@@ -8,10 +8,44 @@ struct ImmersiveMenuView: View {
     @Environment(\.dismissImmersiveSpace) private var dismissImmersiveSpace
         
     var body: some View {
-        VStack {
-            CampEnvironmentItemView(appModel.campEnvironment, isSelected: false) {
-                openWindow(id: appModel.environmentSelectionWindowID)
+        VStack(spacing: 24) {
+            ZStack {
+                Rectangle()
+                    .foregroundColor(appModel.campEnvironment.color)
+                
+                VStack(spacing: 16) {
+                    Text(appModel.campEnvironment.rawValue)
+                        .font(.system(size: 24, weight: .bold))
+                    
+                    Image(appModel.campEnvironment.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 120, height: 120)
+                    
+                    Spacer()
+                }
+                .padding(.top, 24)
+                .padding(.bottom, 16)
+                
+                VStack {
+                    Spacer()
+
+                    ZStack {
+                        Rectangle()
+                            .foregroundColor(.black)
+                            .opacity(0.5)
+                            .frame(height: 80)
+                        
+                        Button {
+                            openWindow(id: appModel.environmentSelectionWindowID)
+                        } label: {
+                            Text("Change")
+                        }
+                    }
+                }
             }
+            .frame(width: 200, height: 300)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
             
             Button {
                 Task {
@@ -26,10 +60,9 @@ struct ImmersiveMenuView: View {
                     }
                 }
             } label: {
-                Image(systemName: "arrow.up.right.and.arrow.down.left")
-                    .font(.title)
+                Text("Exit")
             }
         }
-        .frame(width: 200, height: 300)
+        .frame(width: 200, height: 400)
     }
 }
