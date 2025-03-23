@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CampEnvironmentSelectionView: View {
     @Environment(AppModel.self) var appModel
+    @Environment(\.dismissWindow) var dismissWindow
     
     var body: some View {
         VStack(spacing: 40) {
@@ -14,6 +15,8 @@ struct CampEnvironmentSelectionView: View {
                         CampEnvironmentItemView(environment, isSelected: appModel.campEnvironment == environment) {
                             appModel.campEnvironment = environment
                             UserDefaultsWrapper.saveCampEnvironment(environment)
+                            
+                            dismissWindow(id: appModel.environmentSelectionWindowID)
                         }
                     }
                 }
