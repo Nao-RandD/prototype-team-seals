@@ -20,10 +20,11 @@ def Xform "Root"
             {
                 token birthDirection = "Constant"
                 token birthLocation = "Surface"
+                int64 burstCount = 30
                 float3 emissionDirection = (0, -1, 0)
                 double emissionDuration = 1
                 double emissionDurationVariation = 0
-                token emitterShape = "Plane"
+                token emitterShape = "Box"
                 double idleDuration = 0
                 double idleDurationVariation = 0
                 bool isLocal = 0
@@ -31,7 +32,7 @@ def Xform "Root"
                 bool loops = 1
                 float particleSpeed = 0.08
                 float particleSpeedVariation = 0.04
-                float3 shapeSize = (1, 10, 1)
+                float3 shapeSize = (1, 1, 1)
                 bool spawnInheritParentColor = 0
                 token spawnOccasion = "OnUpdate"
                 float spawnSpreadFactor = 0
@@ -43,7 +44,7 @@ def Xform "Root"
                 {
                     float3 acceleration = (0, 0, 0)
                     token billboardMode = "Billboard"
-                    float birthRate = 500
+                    float birthRate = 100
                     float birthRateVariation = 10
                     token blendMode = "Alpha"
                     float colorEvolutionPower = 0
@@ -60,11 +61,11 @@ def Xform "Root"
                     float particleAngularVelocity = 0
                     float particleAngularVelocityVariation = 0.5
                     asset particleImage = @ParticleEmitterPresetTextures/Spring/cherryblossompetal.png@
-                    double particleLifeSpan = 3
+                    double particleLifeSpan = 5
                     double particleLifeSpanVariation = 0.2
                     float particleMass = 1
                     float particleMassVariation = 0
-                    float particleSize = 0.005
+                    float particleSize = 0.015
                     float particleSizeVariation = 0.002
                     float3 radialGravityCenter = (1, 1, 0)
                     float radialGravityStrength = 0
