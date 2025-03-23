@@ -10,8 +10,16 @@
 
 def Xform "Root"
 {
-    def Xform "ParticleEmitter"
+    def Xform "ParticleEmitter" (
+        customData = {
+            float3 rotationEulerHint = (0, 0, 0)
+        }
+    )
     {
+        quatf xformOp:orient = (1, 0, 0, 0)
+        float3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
         def RealityKitComponent "VFXEmitter"
         {
             token info:id = "RealityKit.VFXEmitter"
@@ -20,7 +28,7 @@ def Xform "Root"
             {
                 token birthDirection = "Constant"
                 token birthLocation = "Surface"
-                int64 burstCount = 30
+                int64 burstCount = 50
                 float3 emissionDirection = (0, -1, 0)
                 double emissionDuration = 1
                 double emissionDurationVariation = 0
@@ -32,7 +40,7 @@ def Xform "Root"
                 bool loops = 1
                 float particleSpeed = 0.08
                 float particleSpeedVariation = 0.04
-                float3 shapeSize = (1, 1, 1)
+                float3 shapeSize = (2, 2, 2)
                 bool spawnInheritParentColor = 0
                 token spawnOccasion = "OnUpdate"
                 float spawnSpreadFactor = 0
