@@ -22,7 +22,6 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 500, height: 300)
-                    .rotation3DEffect(.init(radians: .pi), axis: (x: 0, y: 1, z: 0))
             } placeholder: {
                 ProgressView()
                     .frame(height: 300)

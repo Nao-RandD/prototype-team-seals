@@ -51,7 +51,18 @@
     "objectMetadataList" : [
       [
         "44D81CC2-1742-49F1-9CD2-0366A00271EB",
-        "Root"
+        "Root",
+        "SoundTimeline",
+        "Track3"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "44D81CC2-1742-49F1-9CD2-0366A00271EB",
+        "Root",
+        "SoundTimeline"
       ],
       {
         "isExpanded" : true,
@@ -61,16 +72,6 @@
         "44D81CC2-1742-49F1-9CD2-0366A00271EB",
         "Root",
         "Camp_BBQ"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "44D81CC2-1742-49F1-9CD2-0366A00271EB",
-        "Root",
-        "SoundTimeline",
-        "Track3"
       ],
       {
         "isExpanded" : true,
@@ -92,15 +93,6 @@
       [
         "44D81CC2-1742-49F1-9CD2-0366A00271EB",
         "Root",
-        "SoundTimeline"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "44D81CC2-1742-49F1-9CD2-0366A00271EB",
-        "Root",
         "Cylinder"
       ],
       {
@@ -109,6 +101,14 @@
         "selectedAudioFilePrim" : {
           "string" : "\/Root\/BGM_2_mp3"
         }
+      },
+      [
+        "44D81CC2-1742-49F1-9CD2-0366A00271EB",
+        "Root"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
       },
       [
         "44D81CC2-1742-49F1-9CD2-0366A00271EB",
@@ -163,7 +163,7 @@
       [
         "86FF638F-A196-49CD-BE2E-B4780743AC10",
         "Root",
-        "Timeline"
+        "Camp_Chair_1"
       ],
       {
         "isExpanded" : true,
@@ -171,7 +171,8 @@
       },
       [
         "86FF638F-A196-49CD-BE2E-B4780743AC10",
-        "Root"
+        "Root",
+        "BaseTransform"
       ],
       {
         "isExpanded" : true,
@@ -181,6 +182,23 @@
         "86FF638F-A196-49CD-BE2E-B4780743AC10",
         "Root",
         "Camp_Meal"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "86FF638F-A196-49CD-BE2E-B4780743AC10",
+        "Root",
+        "Camp_Fire_10fps__1_"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "86FF638F-A196-49CD-BE2E-B4780743AC10",
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -199,16 +217,7 @@
       [
         "86FF638F-A196-49CD-BE2E-B4780743AC10",
         "Root",
-        "BaseTransform"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "86FF638F-A196-49CD-BE2E-B4780743AC10",
-        "Root",
-        "Camp_Fire_10fps__1_"
+        "Timeline"
       ],
       {
         "isExpanded" : true,
@@ -230,16 +239,6 @@
   },
   "AF09ED6F-1707-48FD-8720-65B998362C09" : {
     "objectMetadataList" : [
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Firebase_Animation_Sound",
-        "Track"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
@@ -266,24 +265,7 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Firebase_transform"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "SoundTimeline",
+        "Firebase_Animation_Sound",
         "Track2"
       ],
       {
@@ -293,45 +275,8 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Camp_Meal"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Camp______"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Camp______",
-        "_materials"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Camp_Chair_1"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "AF09ED6F-1707-48FD-8720-65B998362C09",
-        "Root",
-        "Camp_Chair_1",
-        "_materials"
+        "Firebase_Animation_Sound",
+        "Track"
       ],
       {
         "isExpanded" : true,
@@ -350,8 +295,54 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Timeline",
+        "SoundTimeline",
         "Track2"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Firebase_transform"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Camp_Cooler_Box"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Camp_Chair_1"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Camp______",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Camp_Meal"
       ],
       {
         "isExpanded" : true,
@@ -369,8 +360,15 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Camp_Chair_1",
-        "CampTool_001"
+        "Camp______"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -379,7 +377,17 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Firebase_Animation_Sound",
+        "Camp_Chair_1",
+        "_materials"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "AF09ED6F-1707-48FD-8720-65B998362C09",
+        "Root",
+        "Timeline",
         "Track2"
       ],
       {
@@ -389,7 +397,8 @@
       [
         "AF09ED6F-1707-48FD-8720-65B998362C09",
         "Root",
-        "Camp_Cooler_Box"
+        "Camp_Chair_1",
+        "CampTool_001"
       ],
       {
         "isExpanded" : true,
@@ -414,8 +423,20 @@
       [
         "C85ED2F4-5B27-467B-B6CD-F105220F6511",
         "Root",
+        "Cylinder"
+      ],
+      {
+        "isExpanded" : false,
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/BGM_1_mp3"
+        }
+      },
+      [
+        "C85ED2F4-5B27-467B-B6CD-F105220F6511",
+        "Root",
         "SoundTimeline",
-        "Track2"
+        "Track3"
       ],
       {
         "isExpanded" : true,
@@ -425,7 +446,7 @@
         "C85ED2F4-5B27-467B-B6CD-F105220F6511",
         "Root",
         "SoundTimeline",
-        "Track3"
+        "Track2"
       ],
       {
         "isExpanded" : true,
@@ -446,19 +467,6 @@
       [
         "C85ED2F4-5B27-467B-B6CD-F105220F6511",
         "Root",
-        "Firebase_transform",
-        "Camp_____10fps"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/se3_firework_mp32"
-        }
-      },
-      [
-        "C85ED2F4-5B27-467B-B6CD-F105220F6511",
-        "Root",
         "Ground_transform"
       ],
       {
@@ -470,7 +478,18 @@
       },
       [
         "C85ED2F4-5B27-467B-B6CD-F105220F6511",
-        "Root"
+        "Root",
+        "Camp_Tent"
+      ],
+      {
+        "isExpanded" : true,
+        "isLocked" : false
+      },
+      [
+        "C85ED2F4-5B27-467B-B6CD-F105220F6511",
+        "Root",
+        "SoundTimeline",
+        "Track"
       ],
       {
         "isExpanded" : true,
@@ -490,17 +509,7 @@
       },
       [
         "C85ED2F4-5B27-467B-B6CD-F105220F6511",
-        "Root",
-        "Firebase_transform"
-      ],
-      {
-        "isExpanded" : true,
-        "isLocked" : false
-      },
-      [
-        "C85ED2F4-5B27-467B-B6CD-F105220F6511",
-        "Root",
-        "Camp_Tent"
+        "Root"
       ],
       {
         "isExpanded" : true,
@@ -518,24 +527,24 @@
       [
         "C85ED2F4-5B27-467B-B6CD-F105220F6511",
         "Root",
-        "SoundTimeline",
-        "Track"
+        "Firebase_transform",
+        "Camp_____10fps"
       ],
       {
         "isExpanded" : true,
-        "isLocked" : false
+        "isLocked" : false,
+        "selectedAudioFilePrim" : {
+          "string" : "\/Root\/se3_firework_mp32"
+        }
       },
       [
         "C85ED2F4-5B27-467B-B6CD-F105220F6511",
         "Root",
-        "Cylinder"
+        "Firebase_transform"
       ],
       {
-        "isExpanded" : false,
-        "isLocked" : false,
-        "selectedAudioFilePrim" : {
-          "string" : "\/Root\/BGM_1_mp3"
-        }
+        "isExpanded" : true,
+        "isLocked" : false
       }
     ]
   },
@@ -605,7 +614,9 @@
     "objectMetadataList" : [
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root"
+        "Root",
+        "GridMaterial",
+        "GridMaterial"
       ],
       {
         "isExpanded" : true,
@@ -613,9 +624,7 @@
       },
       [
         "D66134B1-3681-4A8E-AFE5-29F257229F3B",
-        "Root",
-        "GridMaterial",
-        "GridMaterial"
+        "Root"
       ],
       {
         "isExpanded" : true,
