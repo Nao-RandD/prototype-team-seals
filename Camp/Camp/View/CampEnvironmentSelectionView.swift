@@ -6,7 +6,7 @@ struct CampEnvironmentSelectionView: View {
     var body: some View {
         VStack(spacing: 40) {
             Text("Environments")
-                .font(.extraLargeTitle)
+                .font(.largeTitle)
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 40) {
@@ -19,9 +19,8 @@ struct CampEnvironmentSelectionView: View {
                 }
                 .padding(.horizontal, 40)
             }
-            .navigationTitle("Environments")
         }
-        .frame(width: 600, height: 400)
+        .frame(width: 600, height: 500)
         .onAppear {
             appModel.changeWindowState(.open, type: .environmentSelection)
         }
