@@ -7,59 +7,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Firebase_transform", "Camp_____10fps", "Camp_____Tree", "Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder", "SoundTimeline"]
-    def Cylinder "Cylinder" (
-        active = true
-        prepend apiSchemas = ["MaterialBindingAPI"]
-    )
-    {
-        uniform token axis = "Y"
-        double height = 0.2
-        rel material:binding = </Root/Cylinder/DefaultMaterial>
-        double radius = 0.1
-        float3 xformOp:scale = (3, 0.1, 3)
-        float3 xformOp:translate = (0, -0.01, 0)
-        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
-
-        def Material "DefaultMaterial"
-        {
-            token inputs:frame:stPrimvarName = "st" (
-                customData = {
-                    dictionary realitykit = {
-                        bool hide = 1
-                    }
-                }
-            )
-            token outputs:mtlx:surface
-            token outputs:realitykit:vertex
-            prepend token outputs:surface.connect = </Root/Cylinder/DefaultMaterial/DefaultSurfaceShader.outputs:surface>
-
-            def Shader "DefaultSurfaceShader"
-            {
-                uniform token info:id = "UsdPreviewSurface"
-                color3f inputs:diffuseColor = (1, 1, 1)
-                color3f inputs:diffuseColor.connect = </Root/Cylinder/DefaultMaterial/diffuseColor.outputs:rgb>
-                float inputs:roughness = 0.75
-                token outputs:surface
-            }
-
-            def Shader "diffuseColor"
-            {
-                uniform token info:id = "UsdUVTexture"
-                asset inputs:file = @ground-texture.jpeg@
-                float2 inputs:st.connect = </Root/Cylinder/DefaultMaterial/diffuseColor/TexCoordReader.outputs:result>
-                color3f outputs:rgb
-
-                def Shader "TexCoordReader"
-                {
-                    uniform token info:id = "UsdPrimvarReader_float2"
-                    token inputs:varname.connect = </Root/Cylinder/DefaultMaterial.inputs:frame:stPrimvarName>
-                    float2 outputs:result
-                }
-            }
-        }
-    }
-
+    reorder nameChildren = ["Ground_transform", "Firebase_transform", "Camp_____Tree", "Camp_Cycling_Big", "Camp_Cooler_Box", "Camp_Chair_1", "Camp_Chair_2", "Camp_Meal", "Camp_Tent", "Cylinder", "SoundTimeline", "BGM_1_mp3", "RCP_BehaviorsContainer", "OnAddedToScene", "se3_firework_mp32"]
     def "Camp_Tent" (
         active = true
         customData = {
@@ -403,13 +351,6 @@ def Xform "Root"
                 uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
             }
 
-            def RealityKitComponent "SpatialAudio"
-            {
-                float directivityFocus = 0.19578974
-                float gain = 0
-                uniform token info:id = "RealityKit.SpatialAudio"
-            }
-
             def RealityKitComponent "AnimationLibrary"
             {
                 token info:id = "RealityKit.AnimationLibrary"
@@ -422,8 +363,16 @@ def Xform "Root"
                 def RealityKitDict "resources"
                 {
                     string[] keys = ["se3_firework.mp3"]
-                    rel values = </Root/se3_firework_mp3>
+                    rel values = </Root/se3_firework_mp32>
                 }
+            }
+
+            def RealityKitComponent "SpatialAudio"
+            {
+                float directLevel = -4.117491
+                float gain = -13.087455
+                uniform token info:id = "RealityKit.SpatialAudio"
+                float reverbLevel = -16.682722
             }
         }
 
@@ -451,13 +400,6 @@ def Xform "Root"
             }
         }
 
-        def RealityKitAudioFile "se3_firework_mp3"
-        {
-            uniform asset file = @se3_firework.mp3@
-            uniform bool shouldLoop = 1
-            uniform bool shouldRandomizeStartTime = 1
-        }
-
         def RealityKitComponent "AnimationLibrary"
         {
             token info:id = "RealityKit.AnimationLibrary"
@@ -472,7 +414,7 @@ def Xform "Root"
 
     def RealityKitTimeline "SoundTimeline"
     {
-        reorder nameChildren = ["Track", "Track2"]
+        reorder nameChildren = ["Track", "Track2", "Track3"]
         def RealityKitTrack "Track"
         {
             def RealityKitAction "Animation"
@@ -511,12 +453,25 @@ def Xform "Root"
                 }
             }
         }
-    }
 
-    def RealityKitAudioFile "se3_firework_mp3"
-    {
-        uniform asset file = @se3_firework.mp3@
-        uniform bool shouldLoop = 1
+        def RealityKitTrack "Track3"
+        {
+            def RealityKitAction "Play_Audio"
+            {
+                string actionKind = "audio"
+                string audioResourceName = "BGM-1.mp3"
+                bool controlPlayback = 1
+                double duration = 114.5088125
+                uniform token info:id = "79A19221-244F-4139-9CB8-ABC59627983B"
+                double loopCount = 0
+                double startTime = 0
+                rel target = </Root/Ground_transform>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
     }
 
     def RealityKitComponent "RCP_BehaviorsContainer"
@@ -547,6 +502,59 @@ def Xform "Root"
             int performCount = 1
             token type = "serial"
         }
+    }
+
+    def RealityKitAudioFile "se3_firework_mp32"
+    {
+        uniform asset file = @se3_firework.mp3@
+        uniform bool shouldLoop = 1
+    }
+
+    def RealityKitAudioFile "BGM_1_mp3"
+    {
+        uniform asset file = @BGM-1.mp3@
+        uniform bool shouldLoop = 1
+    }
+
+    def Xform "Ground_transform" (
+        active = true
+    )
+    {
+        def "Camp______" (
+            active = true
+            customData = {
+                float3 rotationEulerHint = (-1.5707961, 0, 3.727561e-9)
+            }
+            prepend references = @Campモデル 春.usdz@
+        )
+        {
+            quatf xformOp:orient = (0.7071068, -0.70710665, -1.3178915e-9, 1.3178918e-9)
+            float3 xformOp:scale = (0.3, 0.3, 0.3)
+            float3 xformOp:translate = (0, -0.03, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+        }
+
+        def RealityKitComponent "ChannelAudio"
+        {
+            uniform token info:id = "RealityKit.ChannelAudio"
+        }
+
+        def RealityKitComponent "AudioLibrary"
+        {
+            uniform token info:id = "RealityKit.AudioLibrary"
+
+            def RealityKitDict "resources"
+            {
+                string[] keys = ["BGM-1.mp3"]
+                rel values = </Root/BGM_1_mp32>
+            }
+        }
+    }
+
+    def RealityKitAudioFile "BGM_1_mp32"
+    {
+        uniform asset file = @BGM-1.mp3@
+        uniform bool shouldLoop = 1
     }
 }
 

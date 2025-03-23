@@ -10,7 +10,7 @@
 
 def Xform "Root"
 {
-    reorder nameChildren = ["Camp_Tent", "BaseTransform", "Timeline"]
+    reorder nameChildren = ["Camp_Chair_1", "Camp_Meal", "Camp_Fire_10fps__1_", "Camp_Chair_2", "BaseTransform", "Timeline"]
     def Xform "BaseTransform" (
         active = true
         customData = {
@@ -27,7 +27,7 @@ def Xform "Root"
         )
         {
             quatf xformOp:orient = (0.99999994, 0, 0, 0)
-            float3 xformOp:scale = (0.09999999, 0.09999999, 0.09999999)
+            float3 xformOp:scale = (0.05, 0.05, 0.05)
             float3 xformOp:translate = (0, 0, 0)
             uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
 
@@ -65,6 +65,7 @@ def Xform "Root"
         {
             bool gravityEnabled = 0
             uniform token info:id = "RealityKit.RigidBody"
+            token motionType = "Kinematic"
 
             def RealityKitStruct "massFrame"
             {
@@ -81,7 +82,7 @@ def Xform "Root"
         def RealityKitComponent "MotionState"
         {
             uniform token info:id = "RealityKit.MotionState"
-            float3 m_userSetAngularVelocity = (0, 0.5, 0)
+            float3 m_userSetAngularVelocity = (0, 0.2, 0)
             uint m_userSetAngularVelocityVersion = 1
             float3 m_userSetLinearVelocity = (0, 0, 0)
             uint m_userSetLinearVelocityVersion = 1
@@ -92,6 +93,237 @@ def Xform "Root"
     {
         def RealityKitTrack "Track"
         {
+            def RealityKitAction "Animation"
+            {
+                string actionKind = "animation"
+                string animation = "default subtree animation"
+                int blendLayer = 500
+                double duration = 5.5
+                uniform token info:id = "A9322CE9-29B8-41F3-8DB5-993071D5A6DA"
+                double loopCount = 0
+                bool separateAnimatedValue = 1
+                double startTime = 0
+                rel target = </Root/Camp_Fire_10fps__1_>
+
+                def RealityKitStruct "handoffType"
+                {
+                }
+            }
+        }
+    }
+
+    def "Camp_Fire_10fps__1_" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.5707964, 1.4901159e-8, 0.3490658)
+        }
+        prepend references = @Camp Fire 10fps (1).usdz@
+    )
+    {
+        quatf xformOp:orient = (0.6963643, -0.6963643, -0.1227878, 0.12278781)
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (0.108882934, 0.04656034, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.86172974, 0.6188419, 1.059758)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-4.4703484e-8, -1.4901161e-8, 0.529879)
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            bool gravityEnabled = 0
+            uniform token info:id = "RealityKit.RigidBody"
+            token motionType = "Kinematic"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+            float3 m_userSetAngularVelocity = (0, 0, 0)
+            uint m_userSetAngularVelocityVersion = 1
+        }
+
+        def RealityKitComponent "AnimationLibrary"
+        {
+            token info:id = "RealityKit.AnimationLibrary"
+
+            def RealityKitAnimationFile "default_subtree_animation"
+            {
+                uniform bool looping = 1
+                uniform string name = "default subtree animation"
+            }
+        }
+
+        def RealityKitComponent "RCP_BehaviorsContainer"
+        {
+            rel behaviors = </Root/Camp_Fire_10fps__1_/OnAddedToScene>
+            uniform token info:id = "RCP.BehaviorsContainer"
+        }
+
+        def Preliminary_Behavior "OnAddedToScene"
+        {
+            rel actions = </Root/Camp_Fire_10fps__1_/OnAddedToScene/Action>
+            uniform bool exclusive
+            rel triggers = </Root/Camp_Fire_10fps__1_/OnAddedToScene/Trigger>
+
+            def Preliminary_Trigger "Trigger"
+            {
+                rel affectedObjects = </Root/Camp_Fire_10fps__1_>
+                token info:id = "SceneTransition"
+            }
+
+            def Preliminary_Action "Action"
+            {
+                rel affectedObjects = </Root>
+                rel animationLibraryKey = </Root/Timeline>
+                rel animationLibraryKeyOverrideKey = </Root/Camp_Fire_10fps__1_/OnAddedToScene/Trigger>
+                token info:id = "PlayTimeline"
+                int loops = 0
+                int performCount = 1
+                token type = "serial"
+            }
+        }
+    }
+
+    def "Camp_Meal" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-1.5707963, 0.17453296, -0.52359873)
+        }
+        prepend references = @Camp Meal.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.6963643, -0.664463, 0.24184477, -0.1227878)
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (-0.079960376, 0.07155751, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (0.9000001, 0.7000002, 0.76013684)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (-0.0144661665, -0.04274723, 0.3830765)
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            bool gravityEnabled = 0
+            uniform token info:id = "RealityKit.RigidBody"
+            token motionType = "Kinematic"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+            float3 m_userSetAngularVelocity = (0, 0.3, 0)
+            uint m_userSetAngularVelocityVersion = 1
+        }
+    }
+
+    def "Camp_Chair_1" (
+        active = true
+        customData = {
+            float3 rotationEulerHint = (-0.6981317, 0.52359897, 1.3765106e-7)
+        }
+        prepend references = @Camp_Chair_1.usdz@
+    )
+    {
+        quatf xformOp:orient = (0.90767336, -0.33036608, 0.24321042, 0.08852141)
+        float3 xformOp:scale = (0.05, 0.05, 0.05)
+        float3 xformOp:translate = (-0.12759343, 0.033140242, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+        def RealityKitComponent "Collider"
+        {
+            uint group = 1
+            uniform token info:id = "RealityKit.Collider"
+            uint mask = 4294967295
+            token type = "Default"
+
+            def RealityKitStruct "Shape"
+            {
+                float3 extent = (1.0794389, 0.53212106, 0.8699999)
+                token shapeType = "Box"
+
+                def RealityKitStruct "pose"
+                {
+                    float3 position = (0.14000706, -0.010489926, 0.4379238)
+                }
+            }
+        }
+
+        def RealityKitComponent "RigidBody"
+        {
+            bool gravityEnabled = 0
+            uniform token info:id = "RealityKit.RigidBody"
+            token motionType = "Kinematic"
+
+            def RealityKitStruct "massFrame"
+            {
+                def RealityKitStruct "m_pose"
+                {
+                }
+            }
+
+            def RealityKitStruct "material"
+            {
+            }
+        }
+
+        def RealityKitComponent "MotionState"
+        {
+            uniform token info:id = "RealityKit.MotionState"
+            float3 m_userSetAngularVelocity = (0, -0.3, 0)
+            uint m_userSetAngularVelocityVersion = 1
         }
     }
 }
