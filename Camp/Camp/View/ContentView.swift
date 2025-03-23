@@ -14,18 +14,21 @@ struct ContentView: View {
         VStack(spacing: 16) {
             Text("どこキャン")
                 .font(.system(size: 80, weight: .bold))
+            
             Text("- Doko Camp -")
                 .font(.extraLargeTitle2)
                 .padding(.init(top: 0, leading: 0, bottom: 32, trailing: 0))
+            
             Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
                 model
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 500, height: 300)
+                    .frame(width: 400, height: 200)
             } placeholder: {
                 ProgressView()
                     .frame(height: 300)
             }
+            
             Button(action: {
                 Task { @MainActor in
                     guard appModel.isImmersiveSpaceClosed else { return }
@@ -51,8 +54,7 @@ struct ContentView: View {
             }
             .disabled(appModel.isImmersiveSpaceInTransition)
             .padding(16)
-
-
+            .padding(.top, 80)
         }
         .padding()
         .onAppear {
