@@ -3,7 +3,7 @@ import RealityKit
 
 /// A gesture modifier handling drag, rotate, magnify gestures.
 struct CraftGesture: ViewModifier {
-    private let moveSpeed: Float = 0.5
+    private let moveSpeed: Float = 0.1
 
     @State var isActive: Bool = false	
     @State var initialPosition: SIMD3<Float> = .zero
