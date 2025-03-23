@@ -536,6 +536,7 @@ def Xform "Root"
 
         def RealityKitComponent "ChannelAudio"
         {
+            float gain = -10.786939
             uniform token info:id = "RealityKit.ChannelAudio"
         }
 
