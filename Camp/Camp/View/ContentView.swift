@@ -17,14 +17,16 @@ struct ContentView: View {
             Text("- Doko Camp -")
                 .font(.extraLargeTitle2)
                 .padding(.init(top: 0, leading: 0, bottom: 32, trailing: 0))
-
-            Text("""
-                Camp Anywhere, Anytime, with Anyone!
-            """)
-                .font(.title)
-                .padding()
-                .background(.ultraThickMaterial)
-                .cornerRadius(20)
+            Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
+                model
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 500, height: 300)
+                    .rotation3DEffect(.init(radians: .pi), axis: (x: 0, y: 1, z: 0))
+            } placeholder: {
+                ProgressView()
+                    .frame(height: 300)
+            }
             Button(action: {
                 Task { @MainActor in
                     guard appModel.isImmersiveSpaceClosed else { return }
@@ -44,21 +46,13 @@ struct ContentView: View {
                     openWindow(id: appModel.immersiveMenuWindowID)
                 }
             }) {
-                Text("Enter")
-                    .font(.title)
-                    .padding()
+                Text("Let's camp")
+                    .font(.largeTitle)
+                    .padding(16)
             }
             .disabled(appModel.isImmersiveSpaceInTransition)
+            .padding(16)
 
-            Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
-                model
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 500, height: 300)
-                    .rotation3DEffect(.init(radians: .pi), axis: (x: 0, y: 1, z: 0))
-            } placeholder: {
-                ProgressView()
-            }
 
         }
         .padding()
