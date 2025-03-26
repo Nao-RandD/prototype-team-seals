@@ -3,7 +3,9 @@ import RealityKit
 
 @Model
 class Craft {
-    @Attribute(.unique) var name: String
+    @Attribute(.unique) var id: String
+    var name: String
+    var environment: String
     
     // Due to the following issue, it seems that we cannot store a single SIMD3<Float> with SwiftData currently.
     // https://developer.apple.com/forums/thread/763634
@@ -11,18 +13,13 @@ class Craft {
     var scale: CraftScale
     var orientation: CraftOrientation
     
-    init(name: String, translation: CraftTranslation, scale: CraftScale, orientation: CraftOrientation) {
+    init(name: String, environment: String, translation: SIMD3<Float>, scale: SIMD3<Float>, orientation: SIMD4<Float>) {
+        self.id = name + "_" + environment
         self.name = name
-        self.translation = translation
-        self.scale = scale
-        self.orientation = orientation
-    }
-    
-    init(entity: Entity) {
-        self.name = entity.name
-        self.translation = .init(entity.transform.translation)
-        self.scale = .init(entity.scale)
-        self.orientation = .init(entity.orientation.vector)
+        self.environment = environment
+        self.translation = .init(translation)
+        self.scale = .init(scale)
+        self.orientation = .init(orientation)
     }
 }
 
