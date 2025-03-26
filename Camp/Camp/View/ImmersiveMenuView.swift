@@ -39,7 +39,9 @@ struct ImmersiveMenuView: View {
                             .frame(height: 80)
                         
                         Button {
-                            openWindow(id: appModel.environmentSelectionWindowID)
+                            if !appModel.isWindowOpen(type: .environmentSelection) {
+                                openWindow(id: appModel.environmentSelectionWindowID)
+                            }
                         } label: {
                             Text("Change")
                         }
