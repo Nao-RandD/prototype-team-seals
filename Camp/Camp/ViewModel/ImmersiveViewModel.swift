@@ -16,21 +16,33 @@ final class ImmersiveViewModel {
         scene.scale *= sceneScale
         rootEntity?.addChild(scene)
         
-        for craft in crafts {
-            if let entity = scene.findEntity(named: craft.name) {
-                var position = craft.translation.simd3
-                position *= sceneScale
-                
-                entity.setPosition(position, relativeTo: nil)
-//                    entity.setScale(craft.scale.simd3, relativeTo: nil)
-                entity.setOrientation(.init(vector: craft.orientation.simd4), relativeTo: nil)
-            }
-        }
+        // Restore craft positions and rotations
+        restoreCrafts(crafts, scene: scene, environment: environment)
 
         if let skybox = Entity.createSkybox(environment: environment) {
             rootEntity?.addChild(skybox)
         }
 
+        // Setup particles
+        setupParticles(environment: environment)
+
+        let light = Entity.createDirectionalLight()
+        rootEntity?.addChild(light)
+    }
+    
+    private func restoreCrafts(_ crafts: [Craft], scene: Entity, environment: CampEnvironment) {
+        for craft in crafts {
+            if let entity = scene.findEntity(named: craft.name), craft.environment == environment.rawValue {
+                var position = craft.translation.simd3
+                position *= sceneScale
+                
+                entity.setPosition(position, relativeTo: nil)
+                entity.setOrientation(.init(vector: craft.orientation.simd4), relativeTo: nil)
+            }
+        }
+    }
+    
+    private func setupParticles(environment: CampEnvironment) {
         switch environment {
         case .spring:
             Task {
@@ -43,8 +55,5 @@ final class ImmersiveViewModel {
             // 何もしない
             break
         }
-
-        let light = Entity.createDirectionalLight()
-        rootEntity?.addChild(light)
     }
 }

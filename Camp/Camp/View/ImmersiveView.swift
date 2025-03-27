@@ -34,8 +34,12 @@ struct ImmersiveView: View {
         .onDisappear {
             appModel.changeImmersiveSpaceState(.closed)
         }
-        .craftGesture { craft in
-            saveCraft(craft)
+        .craftGesture { name, translation, scale, orientation in
+            saveCraft(.init(name: name,
+                            environment: appModel.campEnvironment.rawValue,
+                            translation: translation,
+                            scale: scale,
+                            orientation: orientation))
         }
     }
     

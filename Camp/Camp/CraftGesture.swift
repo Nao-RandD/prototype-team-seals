@@ -10,7 +10,7 @@ struct CraftGesture: ViewModifier {
     @State var initialScale: SIMD3<Float> = .one
     @State var initialOrientation:simd_quatf = simd_quatf(vector: .zero)
 
-    var onGestureEnded: (Craft) -> Void
+    var onGestureEnded: (String, SIMD3<Float>, SIMD3<Float>, SIMD4<Float>) -> Void
     
     func body(content: Content) -> some View {
         content
@@ -35,7 +35,7 @@ struct CraftGesture: ViewModifier {
             }
             .onEnded { value in
                 endGesture()
-                onGestureEnded(.init(entity: value.entity))
+                onGestureEnded(with: value.entity)
             }
     }
     
@@ -53,7 +53,7 @@ struct CraftGesture: ViewModifier {
             }
             .onEnded { value in
                 endGesture()
-                onGestureEnded(.init(entity: value.entity))
+                onGestureEnded(with: value.entity)
             }
     }
     
@@ -79,7 +79,7 @@ struct CraftGesture: ViewModifier {
             }
             .onEnded { value in
                 endGesture()
-                onGestureEnded(.init(entity: value.entity))
+                onGestureEnded(with: value.entity)
             }
     }
     
@@ -104,10 +104,17 @@ struct CraftGesture: ViewModifier {
         initialScale = .one
         initialOrientation = simd_quatf(vector: .zero)
     }
+    
+    private func onGestureEnded(with entity: Entity) {
+        onGestureEnded(entity.name,
+                       entity.transform.translation,
+                       entity.scale,
+                       entity.orientation.vector)
+    }
 }
 
 extension View {
-    func craftGesture(onGestureEnded: @escaping (Craft) -> Void) -> some View {
+    func craftGesture(onGestureEnded: @escaping (String, SIMD3<Float>, SIMD3<Float>, SIMD4<Float>) -> Void) -> some View {
         modifier(CraftGesture(onGestureEnded: onGestureEnded))
     }
 }
