@@ -26,7 +26,7 @@ struct ContentView: View {
                     .frame(width: 400, height: 200)
             } placeholder: {
                 ProgressView()
-                    .frame(height: 300)
+                    .frame(height: 200)
             }
             
             Button(action: {
