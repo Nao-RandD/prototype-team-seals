@@ -9,11 +9,34 @@ enum CampEnvironment: String, CaseIterable {
     case winter = "Winter"
 
     var skyboxName: String {
-        "Skybox_" + self.rawValue
+        switch self {
+        case .spring, .autumn, .winter:
+            return "CartoonBaseBlueSky"
+        case .summer:
+            return "CartoonBaseNightSky"
+        }
     }
     
     var imageName: String {
         "Tree_" + self.rawValue
+    }
+    
+    var particleName: String {
+        let name = switch self {
+        case .spring:
+            "CherryBlossomParticle"
+        case .summer:
+            "FireflyParticle"
+        case .autumn:
+            "MapleLeafParticle"
+        case .winter:
+            "SnowParticle"
+        }
+        return "Particles/\(name)"
+    }
+    
+    var environmentName: String {
+        "Environments/\(rawValue)"
     }
     
     var color: Color {
@@ -30,11 +53,6 @@ enum CampEnvironment: String, CaseIterable {
     }
     
     var isAvailable: Bool {
-        switch self {
-        case .spring, .summer:
-            return true
-        case .autumn, .winter:
-            return false
-        }
+        true
     }
 }
