@@ -255,7 +255,7 @@ def Xform "Root"
         customData = {
             float3 rotationEulerHint = (0, -0.78539807, 0)
         }
-        references = @../Models/Camp Cycling Model.usdz@
+        references = @../Models/Camp Cycling Big.usdz@
     )
     {
         quatf xformOp:orient = (0.92387956, 0, -0.3826834, 0)
