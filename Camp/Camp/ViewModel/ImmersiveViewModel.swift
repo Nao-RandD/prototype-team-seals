@@ -12,7 +12,7 @@ final class ImmersiveViewModel {
     func setup(appModel: AppModel, environment: CampEnvironment, crafts: [Craft]) async {
         rootEntity?.children.removeAll()
         
-        guard let scene = try? await Entity(named: environment.rawValue, in: realityKitContentBundle) else { return }
+        guard let scene = try? await Entity(named: environment.environmentName, in: realityKitContentBundle) else { return }
         scene.scale *= sceneScale
         rootEntity?.addChild(scene)
         
@@ -43,17 +43,11 @@ final class ImmersiveViewModel {
     }
     
     private func setupParticles(environment: CampEnvironment) {
-        switch environment {
-        case .spring:
-            Task {
-                if let world1Scene = try? await Entity(named: "SpringWorld", in: realityKitContentBundle) {
-                    world1Scene.position = [0, 1, 0]
-                    rootEntity?.addChild(world1Scene)
-                }
+        Task {
+            if let particle = try? await Entity(named: environment.particleName, in: realityKitContentBundle) {
+                particle.position = [0, 1, 0]
+                rootEntity?.addChild(particle)
             }
-        default:
-            // 何もしない
-            break
         }
     }
 }
