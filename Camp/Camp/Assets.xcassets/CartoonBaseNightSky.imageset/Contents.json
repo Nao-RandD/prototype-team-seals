@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Cartoon Base NightSky Equirect.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
