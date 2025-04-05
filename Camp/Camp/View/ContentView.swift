@@ -12,12 +12,8 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            Text("どこキャン")
+            Text("Doko Camp")
                 .font(.system(size: 80, weight: .bold))
-            
-            Text("- Doko Camp -")
-                .font(.extraLargeTitle2)
-                .padding(.init(top: 0, leading: 0, bottom: 32, trailing: 0))
             
             Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
                 model
