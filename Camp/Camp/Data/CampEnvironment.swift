@@ -16,7 +16,20 @@ enum CampEnvironment: String, CaseIterable {
             return "CartoonBaseNightSky"
         }
     }
-    
+
+    var localizedString: String {
+            switch self {
+            case .spring:
+                return String(localized: "Spring", defaultValue: "Spring")
+            case .summer:
+                return String(localized: "Summer", defaultValue: "Summer")
+            case .autumn:
+                return String(localized: "Autumn", defaultValue: "Autumn")
+            case .winter:
+                return String(localized: "Winter", defaultValue: "Winter")
+            }
+        }
+
     var imageName: String {
         "Tree_" + self.rawValue
     }

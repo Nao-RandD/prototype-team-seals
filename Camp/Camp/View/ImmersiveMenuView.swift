@@ -14,7 +14,7 @@ struct ImmersiveMenuView: View {
                     .foregroundColor(appModel.campEnvironment.color)
                 
                 VStack(spacing: 16) {
-                    Text(appModel.campEnvironment.rawValue)
+                    Text(appModel.campEnvironment.localizedString)
                         .font(.system(size: 24, weight: .bold))
                     
                     Image(appModel.campEnvironment.imageName)
