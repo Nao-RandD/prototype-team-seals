@@ -11,7 +11,7 @@ struct ContentView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 36) {
             Text("Doko Camp")
                 .font(.system(size: 80, weight: .bold))
             
@@ -50,7 +50,7 @@ struct ContentView: View {
             }
             .disabled(appModel.isImmersiveSpaceInTransition)
             .padding(16)
-            .padding(.top, 80)
+            .padding(.top, 60)
         }
         .padding()
         .onAppear {
