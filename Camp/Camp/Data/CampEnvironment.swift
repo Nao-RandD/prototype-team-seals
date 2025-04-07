@@ -17,21 +17,12 @@ enum CampEnvironment: String, CaseIterable {
         }
     }
 
-    var localizedString: String {
-            switch self {
-            case .spring:
-                return String(localized: "Spring", defaultValue: "Spring")
-            case .summer:
-                return String(localized: "Summer", defaultValue: "Summer")
-            case .autumn:
-                return String(localized: "Autumn", defaultValue: "Autumn")
-            case .winter:
-                return String(localized: "Winter", defaultValue: "Winter")
-            }
+    var localizedName: LocalizedStringKey {
+        .init(rawValue)
         }
 
     var imageName: String {
-        "Tree_" + self.rawValue
+        "Tree_" + rawValue
     }
     
     var particleName: String {

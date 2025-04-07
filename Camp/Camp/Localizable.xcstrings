@@ -40,7 +40,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "環境選択"
+            "value" : "環境"
           }
         }
       }
@@ -60,7 +60,7 @@
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "キャンプを始める"
+            "value" : "キャンプをはじめる"
           }
         }
       }

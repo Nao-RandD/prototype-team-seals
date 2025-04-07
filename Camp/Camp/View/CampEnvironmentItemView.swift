@@ -21,7 +21,7 @@ struct CampEnvironmentItemView: View {
                 .foregroundColor(environment.color)
             
             VStack(spacing: 16) {
-                Text(environment.localizedString)
+                Text(environment.localizedName)
                     .font(.system(size: 24, weight: .bold))
                 
                 Image(environment.imageName)
