@@ -11,13 +11,9 @@ struct ContentView: View {
     @Environment(\.openImmersiveSpace) private var openImmersiveSpace
     
     var body: some View {
-        VStack(spacing: 16) {
-            Text("どこキャン")
-                .font(.system(size: 80, weight: .bold))
-            
-            Text("- Doko Camp -")
-                .font(.extraLargeTitle2)
-                .padding(.init(top: 0, leading: 0, bottom: 32, trailing: 0))
+        VStack(spacing: 36) {
+            Text("Doko Camp")
+                .font(.system(size: 64, weight: .bold))
             
             Model3D(named: "Placeholder", bundle: realityKitContentBundle) { model in
                 model
@@ -54,7 +50,7 @@ struct ContentView: View {
             }
             .disabled(appModel.isImmersiveSpaceInTransition)
             .padding(16)
-            .padding(.top, 80)
+            .padding(.top, 60)
         }
         .padding()
         .onAppear {

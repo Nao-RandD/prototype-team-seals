@@ -16,9 +16,13 @@ enum CampEnvironment: String, CaseIterable {
             return "CartoonBaseNightSky"
         }
     }
-    
+
+    var localizedName: LocalizedStringKey {
+        .init(rawValue)
+        }
+
     var imageName: String {
-        "Tree_" + self.rawValue
+        "Tree_" + rawValue
     }
     
     var particleName: String {
